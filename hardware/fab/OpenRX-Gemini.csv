@@ -31,6 +31,7 @@
 "TP2","1","TX","","","","OpenRX-Shared:SolderPad_1.2x2.0mm","","","",""
 "TP3","1","5V","","","","OpenRX-Shared:SolderPad_1.2x2.0mm","","","",""
 "TP4","1","GND","","","","OpenRX-Shared:SolderPad_1.2x2.0mm","","","",""
+"TP5","1","TestPoint","","","","TestPoint:TestPoint_Pad_D1.5mm","","","",""
 "U1","1","ESP32-C3","","","","Package_DFN_QFN:QFN-32-1EP_5x5mm_P0.5mm_EP3.7x3.7mm","https://www.espressif.com/sites/default/files/documentation/esp32-c3_datasheet_en.pdf","","",""
 "U2","1","TLV75533PDQNR","","","","OpenRX-Shared:X2SON-4_L1.0-W1.0-P0.65-TL-EP","","C2861882","","C2861882"
 "U3,U6","2","LR1121IMLTRT","","","","Package_DFN_QFN:QFN-32-1EP_5x5mm_P0.5mm_EP3.7x3.7mm","","C7498014","",""
