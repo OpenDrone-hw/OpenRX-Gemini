@@ -58,9 +58,10 @@ Identical in every OpenDrone board repo. Do not edit here; edit the template.
   `PARTS-USED.md` first. If the part is there we have already sourced,
   footprinted and shipped it, and its symbol links to the exact committed
   datasheet: place it from `OpenDrone`. Draw a new part into `lib` only when
-  the catalogue has nothing that fits, imported with `easyeda2kicad` from its
-  LCSC number. Pulling a newer catalogue is a deliberate, reviewed commit:
-  `git submodule update --remote hardware/KiCad-Library`, then DRC.
+  the catalogue has nothing that fits, imported with
+  `easyeda2kicad` from its LCSC number. Pulling a newer catalogue is a
+  deliberate, reviewed commit: `git submodule update --remote
+  hardware/KiCad-Library`, then DRC.
 - **One person holds a board layout at a time.** KiCad files do not merge. Say
   on Discord that you are taking it. See [CONTRIBUTING.md](CONTRIBUTING.md).
 - **Run ERC and DRC before every pull request.** Existing approved findings
@@ -79,8 +80,9 @@ On macOS `kicad-cli` is at
 `/Applications/KiCad/KiCad.app/Contents/MacOS/kicad-cli`, and `pcbnew` imports
 only under KiCad's bundled Python. Reusable scripts for renders, STEP export,
 and packaging art come from Incutec hardware tooling. The OpenDrone release
-standard lives in `OpenDrone-hw/.github/RELEASES.md`; board-specific scripts
-live in `hardware/tools/`.
+standard is
+[RELEASES.md](https://github.com/OpenDrone-hw/.github/blob/main/RELEASES.md).
+Board-specific scripts, where a board has any, live in `hardware/tools/`.
 
 ## Architecture
 
