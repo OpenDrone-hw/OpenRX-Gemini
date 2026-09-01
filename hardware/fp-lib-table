@@ -1,4 +1,4 @@
 (fp_lib_table
-  (lib (name "OpenRX-Shared")(type "KiCad")(uri "${KIPRJMOD}/../shared/libs/OpenRX-Shared.pretty")(options "")(descr "Shared footprints for all OpenRX receivers"))
-  (lib (name "OpenDrone")(type "KiCad")(uri "${KIPRJMOD}/../KiCad-Library/footprint/OpenDrone.pretty")(options "")(descr "OpenDrone parts catalogue, root submodule"))
+  (lib (name "OpenRX-Shared")(type "KiCad")(uri "${KIPRJMOD}/lib.pretty")(options "")(descr "Project-local OpenRX footprints; legacy nickname retained by the design"))
+  (lib (name "OpenDrone")(type "KiCad")(uri "${KIPRJMOD}/KiCad-Library/footprint/OpenDrone.pretty")(options "")(descr "OpenDrone parts catalogue"))
 )

@@ -83,8 +83,8 @@ stencil_out/
 
 # --- repo-specific, below the canonical block ---------------------------------
 # Firmware handoff bundles are shared out-of-band, not tracked
-OpenRX-Gemini/firmware-handoff/
-OpenRX-Gemini/firmware-handoff.zip
+hardware/firmware-handoff/
+hardware/firmware-handoff.zip
 # Regenerable analysis dumps
 netlist.xml
 schematic_analysis.json
