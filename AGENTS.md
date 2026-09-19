@@ -152,3 +152,14 @@ antenna keepout. The shared TCXO fan-out must remain short and balanced.
 |---|---|---|
 | rev2 | 2026-08-14 | Fab set re-exported and verified; small batch ordered. |
 | rev1 | 2026-03-23 | First released OpenRX Gemini design. |
+
+## By task
+
+Board-specific paths are in Environment above. `KPY` is KiCad's bundled
+Python named there.
+
+- Check the design: run the ERC and DRC commands in Environment before every pull request.
+- Add a part: place it from the `OpenDrone` library if `hardware/KiCad-Library/PARTS-USED.md` lists it; otherwise import it into `lib` with `$KPY <hardware-tooling>/hardware/kicad/import_part.py` (read `--help` first), KiCad closed.
+- Render the board for the README: `$KPY <hardware-tooling>/hardware/kicad/render_board.py hardware/OpenRX-Gemini.kicad_pcb --outdir images`, KiCad closed.
+- Analyse the netlist: export it with the netlist command in Environment, then read it with a script; never hand-write a second BOM.
+- Update the shared library: `git submodule update --remote hardware/KiCad-Library`, run DRC, commit as its own reviewed change.
