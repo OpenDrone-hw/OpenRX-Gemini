@@ -31,7 +31,7 @@ interfaces for Gemini and Xrossband operation.
 | Dimensions | 17.0 x 15.7 mm |
 | PCB | 6-layer, 1.0 mm |
 
-Technical write-up, part list and layout constraints: [AGENTS.md](AGENTS.md).
+Technical write-up, part list and layout constraints: in the git history of AGENTS.md, `git show 3a9b177:AGENTS.md`.
 
 ## In the line
 
