@@ -155,33 +155,11 @@ Identical in every OpenDrone board repo. Do not edit here; edit the template.
 | rev2 | 2026-08-14 | Fab set re-exported and verified; small batch ordered. |
 | rev1 | 2026-03-23 | First released OpenRX Gemini design. |
 
+
 ### Production change note (2026-10-24)
 
-Decided by the founder on 2026-10-24: from the next order, this board is ordered
-as its own SKU and the fab panelises it on its own production panel. The 4-in-1
-OpenRX panel (`OpenRX/panel`, rev2.2) is not used for future production.
-
-Lessons from the NextPCB CAM review of panel rev2.2 (job 37666-3823383, 23 Oct
-2026) that apply to this board on its own panel:
-
-- Castellated edge: no tabs or webs on the castellated test-point edge. The
-  pads drawn past the edge carry drilled holes outside the outline: copper must
-  reach the edge and everything outside the outline is milled away. Say so on
-  the order sheet as intentional.
-- Tabs: NextPCB keeps webs at least 3 mm from board corners and wants two rail
-  tabs about 2 mm apart; design or approve the array with that rule.
-- Stack-up: the fab's standard 6-layer 1.0 mm build uses 1080 prepreg, about
-  0.072 mm on L1-L2 and L5-L6, not the 0.1 mm in our KiCad stack-up. The RF
-  traces are short, so impedance is not controlled; order with no impedance
-  control and accept the fab's stack-up.
-- Expected CAM edits, not design faults: etch compensation, copper pulled back
-  about 0.2 mm from the outline and castellation corners, castellation drill
-  +0.1 mm for plating, unconnected inner pads removed, vias nudged up to 0.08 mm.
-  Ask for the list in writing.
-- Paste: NextPCB copied the board outline as a 0.2 mm line into both paste
-  layers. Ask the fab to confirm it is not cut into the stencil.
-- Delivery: decide per order between full panels (we snap) and depanelised
-  boards with tab remnants milled flush (needs the fab's depaneling fixture).
+From the next order this board is ordered as its own SKU on the fab's production
+panel; the 4-in-1 OpenRX panel (rev2.2) is not used again (founder, 2026-10-24).
 
 ## By task
 
