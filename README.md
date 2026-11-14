@@ -1,8 +1,11 @@
 # OpenRX Gemini
 
-Open-source dual-radio, dual-band ExpressLRS receiver for FPV aircraft. OpenRX
-Gemini combines an ESP32-C3 with two LR1121 radio chains and two U.FL antenna
-interfaces for Gemini and Xrossband operation.
+Open-source dual-radio, dual-band (868/915 MHz and 2.4 GHz) ExpressLRS radio
+control receiver module with telemetry, for any radio-controlled build: cars,
+boats, robots and aircraft. OpenRX Gemini combines an ESP32-C3 with two LR1121
+radio chains and two U.FL antenna interfaces for Gemini and Xrossband operation.
+It passes the received channels over serial (CRSF) on its RX and TX pads to a
+controller, for example a flight controller or a vehicle or robot controller.
 
 <p>
 <img src="images/front.png" width="400" alt="OpenRX Gemini front" />
