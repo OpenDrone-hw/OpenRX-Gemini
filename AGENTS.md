@@ -113,7 +113,7 @@ The [Board rules](#board-rules) at the end of this file apply, a CI-checked copy
 
 | Rev | Date | Change |
 |---|---|---|
-| rev2 | 2026-08-14 | Fab set re-exported and verified; small batch ordered. |
+| rev2 | 2026-08-14 | Fab set re-exported and verified. |
 | rev1 | 2026-03-23 | First released OpenRX Gemini design. |
 
 ## By task
