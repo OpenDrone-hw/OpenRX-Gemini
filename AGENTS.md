@@ -73,82 +73,16 @@ authoritative GPIO, RF-switch table and power values are in
 | | |
 |---|---|
 | Maintainer | @bastian2001 |
-| Status | See the `status-*` topic on the repo. Never written here. |
-| Designed in | KiCad 10 |
 | KiCad project | `hardware/OpenRX-Gemini.kicad_pro` |
 | Root schematic | `hardware/OpenRX-Gemini.kicad_sch`; sheets `esp32-c3.kicad_sch`, `clock.kicad_sch`, and two instances of `lr1121.kicad_sch` |
 | Board | `hardware/OpenRX-Gemini.kicad_pcb`, 6 layers, 1.0 mm |
 | Local library | `hardware/lib.pretty/` and `hardware/lib.3dshapes/`, nickname `OpenRX-Shared` retained by the design; `shared/libs/OpenRX-Shared.3dshapes` is a compatibility link for embedded legacy model paths |
-| Shared library | `hardware/KiCad-Library/`, submodule of [OpenDrone-hw/KiCad-Library](https://github.com/OpenDrone-hw/KiCad-Library), nickname `OpenDrone`; exact component datasheets resolve through the project text variable `OPENDRONE_LIB` |
 | Design rules | `hardware/OpenRX-Gemini.kicad_dru` |
-| Fab config | `hardware/fabrication-toolkit-options.json` |
 | Firmware target | `firmware/OpenRX Gemini LR1121.json` and `firmware/targets_entries.json` |
-| Board setup | Standard: 6 layers, 0.09 mm clearance and track, via 0.35 on 0.20 drill |
-| License | CERN-OHL-S-2.0 |
-
-## Parts and datasheets
-
-- **Per-repository part index:** `hardware/OpenRX-Gemini.kicad_sch` and its
-  listed sub-sheets are authoritative for what this board fits. Export the
-  netlist with the command below when a script-readable board index is needed;
-  do not maintain a second hand-written BOM.
-- **Proven shared parts:**
-  `hardware/KiCad-Library/PARTS-USED.md` is the catalogue index. Its `Boards`
-  column identifies every repository using each LCSC part; filter it for
-  `OpenRX-Gemini` to get this repository's proven shared-part view.
-- **Exact datasheets:**
-  `hardware/KiCad-Library/datasheet/manifest.json` maps shared symbols to the
-  committed PDFs and their SHA-256 hashes. The PDFs live in
-  `hardware/KiCad-Library/datasheet/`, and symbol links resolve there through
-  `OPENDRONE_LIB`.
-- **Local-only parts:** inspect `hardware/lib.pretty/` and
-  `hardware/lib.3dshapes/`, then verify supplier fields in the board
-  schematic. Do not duplicate a shared part or datasheet.
-
-## Environment
-
-```sh
-kicad-cli sch erc hardware/OpenRX-Gemini.kicad_sch
-kicad-cli pcb drc --schematic-parity --refill-zones hardware/OpenRX-Gemini.kicad_pcb
-kicad-cli sch export netlist --format kicadsexpr -o /tmp/OpenRX-Gemini.net hardware/OpenRX-Gemini.kicad_sch
-```
-
-On macOS `kicad-cli` is at
-`/Applications/KiCad/KiCad.app/Contents/MacOS/kicad-cli`, and `pcbnew` imports
-only under KiCad's bundled Python. Reusable scripts for renders, STEP export,
-and packaging art come from Incutec hardware tooling. The OpenDrone release
-standard is
-[RELEASES.md](https://github.com/OpenDrone-hw/.github/blob/main/RELEASES.md).
-This board has no board-specific scripts; any it gets go in a `tools` folder under `hardware`.
 
 ## Rules
 
-Identical in every OpenDrone board repo. Do not edit here; edit the template.
-
-- **Never text-edit** `.kicad_sch`, `.kicad_pcb` or `.kicad_dru`. Use KiCad, or
-  kicad-skip / the pcbnew API for scripted changes. `.kicad_pro` is JSON and may
-  be edited directly for metadata.
-  kicad-skip cannot round-trip KiCad 10 schematics: use a full S-expression
-  parser, `kicad-cli sch upgrade --force`, then an ERC and netlist diff.
-- **Metadata yes, connections no.** An agent may write BOM and documentation
-  fields (MPN, Manufacturer, LCSC, Cost, Datasheet, text variables). An agent
-  may not change nets, wiring, routing, placement, footprint assignment, or any
-  value that changes the circuit.
-- **Close KiCad before any write to a KiCad file.** KiCad caches library tables
-  at process start and overwrites files on save.
-- **Reuse before you draw.** Check the `OpenDrone` library and its
-  `PARTS-USED.md` first. If the part is there we have already sourced,
-  footprinted and shipped it, and its symbol links to the exact committed
-  datasheet: place it from `OpenDrone`. Draw a new part into `lib` only when
-  the catalogue has nothing that fits, imported with
-  `easyeda2kicad` from its LCSC number. Pulling a newer catalogue is a
-  deliberate, reviewed commit: `git submodule update --remote
-  hardware/KiCad-Library`, then DRC.
-- **One person holds a board layout at a time.** KiCad files do not merge. Say
-  on Discord that you are taking it. See [CONTRIBUTING.md](CONTRIBUTING.md).
-- **Run ERC and DRC before every pull request.** Existing approved findings
-  may remain; a new type or increased count must be reviewed before merge.
-  Commands are in Environment above.
+The shared [Board rules](https://github.com/OpenDrone-hw/hardware-template/blob/main/AGENTS.md#board-rules) apply. Only what differs for this board is listed here.
 
 ## Revisions
 
@@ -157,13 +91,3 @@ Identical in every OpenDrone board repo. Do not edit here; edit the template.
 | rev2 | 2026-08-14 | Fab set re-exported and verified; small batch ordered. |
 | rev1 | 2026-03-23 | First released OpenRX Gemini design. |
 
-## By task
-
-Board-specific paths are in Environment above. `KPY` is KiCad's bundled
-Python named there.
-
-- Check the design: run the ERC and DRC commands in Environment before every pull request.
-- Add a part: place it from the `OpenDrone` library if `hardware/KiCad-Library/PARTS-USED.md` lists it; otherwise import it into `lib` with `$KPY <hardware-tooling>/hardware/kicad/import_part.py` (read `--help` first), KiCad closed.
-- Render the board for the README: `$KPY <hardware-tooling>/hardware/kicad/render_board.py hardware/OpenRX-Gemini.kicad_pcb --outdir images`, KiCad closed.
-- Analyse the netlist: export it with the netlist command in Environment, then read it with a script; never hand-write a second BOM.
-- Update the shared library: `git submodule update --remote hardware/KiCad-Library`, run DRC, commit as its own reviewed change.
